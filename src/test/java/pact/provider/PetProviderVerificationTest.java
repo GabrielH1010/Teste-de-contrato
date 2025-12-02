@@ -11,18 +11,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import au.com.dius.pact.provider.junitsupport.State;
 
 @Provider("PetProvider")
-
-//Garante que leia o arquivo gerado
 @PactFolder("target/pacts")
 public class PetProviderVerificationTest {
 
     @BeforeEach
     void before(PactVerificationContext context) {
-        //Sobe o servidor mock antes da verificação
-        System.out.println("Subindo servidor mock");
+        System.out.println("Subindo servidor mock...");
         PetMockProvider.start();
 
-        // Configura o alvo HTTP do teste
+        try {
+            // Aguarda o Spark iniciar completamente
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.out.print("Erro ao iniciar o servidor: " + e);
+        }
+
+        System.out.println("Configurando alvo de verificação...");
         context.setTarget(new HttpTestTarget("localhost", 9999));
     }
 
