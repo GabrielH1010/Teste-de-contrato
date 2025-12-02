@@ -1,0 +1,111 @@
+{
+  "consumer": {
+    "name": "PetConsumer"
+  },
+  "interactions": [
+    {
+      "comments": {
+        "text": [
+
+        ]
+      },
+      "description": "Adicionando novo Pet",
+      "key": "c212cd13",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "Pet existe"
+        }
+      ],
+      "request": {
+        "body": {
+          "content": {
+            "id": 99999,
+            "name": "Flash",
+            "photoUrls": [
+              "www.flash.com"
+            ],
+            "status": "Pendente"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            }
+          }
+        },
+        "method": "POST",
+        "path": "/pet"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "id": 99999,
+            "name": "Flash",
+            "photoUrls": [
+              "www.flash.com"
+            ],
+            "status": "Pendente"
+          },
+          "contentType": "application/json; charset=UTF-8",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json; charset=UTF-8"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            }
+          },
+          "header": {
+            "Content-Type": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "application/json(;\\s?charset=[\\w\\-]+)?"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      },
+      "transport": "http",
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.6.14"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "PetProvider"
+  }
+}

@@ -1,0 +1,5 @@
+pact\provider\PetProviderVerificationTest.class
+pact\utils\Utils.class
+pact\consumer\ConsumerPactTest.class
+schema\AddPetSchemaValidationTest.class
+pact\provider\PetMockProvider.class
